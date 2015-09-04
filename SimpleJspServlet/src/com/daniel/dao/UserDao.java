@@ -3,6 +3,7 @@ package com.daniel.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,13 @@ public class UserDao
 		try
 		{
 		PreparedStatement ps = con.prepareStatement("insert into users(firstname,lastname,dob,emailid) values(?,?,?,?)");
-		ps.setString(1,"firstname");
-		ps.setString(2,"lastname");
+		ps.setString(1,user.getFirstname());
+		ps.setString(2,user.getLastname());
 		ps.setDate(3,new java.sql.Date(user.getDob().getTime()));
-		ps.setString(4,"emailid");
+		ps.setString(4,user.getEmailid());
 		
 		ps.executeUpdate();
-		}catch(Exception e)
+		}catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
@@ -43,7 +44,7 @@ public class UserDao
 			PreparedStatement ps = con.prepareStatement("delete from users where userid=?");
 			ps.setInt(1,userid);
 			ps.executeUpdate();
-		}catch(Exception e)
+		}catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
@@ -61,7 +62,7 @@ public class UserDao
 			ps.setInt(5,user.getUserid());
 			
 			ps.executeUpdate();
-		}catch(Exception e)
+		}catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
@@ -84,7 +85,7 @@ public class UserDao
 				user.setEmailid(rs.getString("emailid"));
 				users.add(user);
 			}
-		}catch(Exception e)
+		}catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
@@ -98,7 +99,7 @@ public class UserDao
 			{
 				PreparedStatement ps = con.prepareStatement("select * from users where userid=?");
 				ResultSet rs = ps.executeQuery();
-				while(rs.next())
+				if(rs.next())
 				{
 					
 					user.setUserid(rs.getInt("userid"));
@@ -108,7 +109,7 @@ public class UserDao
 					user.setEmailid(rs.getString("emailid"));
 					
 				}
-			}catch(Exception e)
+			}catch (SQLException e)
 			{
 				e.printStackTrace();
 			}

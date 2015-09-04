@@ -1,8 +1,11 @@
 package com.daniel.util;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class DbUtil 
@@ -31,10 +34,15 @@ public class DbUtil
 			
 			con = DriverManager.getConnection(url, user, pwd);
 		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	return con;
 	}
