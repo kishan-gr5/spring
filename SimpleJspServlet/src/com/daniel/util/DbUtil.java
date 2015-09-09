@@ -12,7 +12,7 @@ public class DbUtil
 {
 	private static Connection con=null;
 	
-	public static Connection getConnection()
+	public static Connection getconnection()
 	{
 	if(con!=null)
 	{
@@ -23,7 +23,7 @@ public class DbUtil
 		try
 		{
 			Properties prop = new Properties();
-			InputStream ip = DbUtil.class.getClassLoader().getResourceAsStream("/db.properties");
+			InputStream ip = DbUtil.class.getClassLoader().getResourceAsStream("db.properties");
 			prop.load(ip);
 			String driver = prop.getProperty("driver");
 			String url = prop.getProperty("url");

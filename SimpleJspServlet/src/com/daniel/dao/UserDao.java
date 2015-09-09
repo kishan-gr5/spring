@@ -17,7 +17,7 @@ public class UserDao
 	
 	public UserDao()
 	{
-		con= DbUtil.getConnection();
+		con= DbUtil.getconnection();
 	}
 	
 	public void addUser(User user)
@@ -98,6 +98,7 @@ public class UserDao
 			try
 			{
 				PreparedStatement ps = con.prepareStatement("select * from users where userid=?");
+				ps.setInt(1,userid);
 				ResultSet rs = ps.executeQuery();
 				if(rs.next())
 				{
