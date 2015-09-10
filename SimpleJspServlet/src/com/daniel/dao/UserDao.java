@@ -54,7 +54,7 @@ public class UserDao
 	{
 		try
 		{
-			PreparedStatement ps = con.prepareStatement("update user set firstname=?,lastname=?,dob=?,emailid=?"+ "where userid=?");
+			PreparedStatement ps = con.prepareStatement("update users set firstname=?,lastname=?,dob=?,emailid=?"+ "where userid=?");
 			ps.setString(1,user.getFirstname());
 			ps.setString(2,user.getLastname());
 			ps.setDate(3,new java.sql.Date(user.getDob().getTime()));
@@ -81,7 +81,7 @@ public class UserDao
 				user.setUserid(rs.getInt("userid"));
 				user.setFirstname(rs.getString("firstname"));
 				user.setLastname(rs.getString("lastname"));
-				user.setDob(rs.getDate("dob"));
+				//user.setDob(rs.getDate("dob"));
 				user.setEmailid(rs.getString("emailid"));
 				users.add(user);
 			}
@@ -106,7 +106,7 @@ public class UserDao
 					user.setUserid(rs.getInt("userid"));
 					user.setFirstname(rs.getString("firstname"));
 					user.setLastname(rs.getString("lastname"));
-					user.setDob(rs.getDate("dob"));
+					//user.setDob(rs.getDate("dob"));
 					user.setEmailid(rs.getString("emailid"));
 					
 				}

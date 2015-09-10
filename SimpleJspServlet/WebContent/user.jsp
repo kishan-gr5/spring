@@ -1,3 +1,5 @@
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,7 +19,7 @@
 			});
 	</script>
 	<form action='UserController' method="post" name="frmAddUser">
-		UserId: <input type="text" readonly="readonly" name="userid" value="<c:out value="${user.userid}"/>"/> <br/>
+		UserId: <input type="text" readonly="readonly"/> <br/>
 		FirstName: <input type="text" name="firstname" value="<c:out value="${user.firstname}"/>"/> <br/>
 		LastName: <input type="text" name="lastname" value="<c:out value="${user.lastname}"/>"/> <br/>
 		DOB: <input type="text" name="dob" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}"/>"/> <br/>

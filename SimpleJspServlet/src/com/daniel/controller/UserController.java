@@ -73,10 +73,12 @@ public class UserController extends HttpServlet {
     	if(userid == null || userid.isEmpty())
     	{
     		dao.addUser(user);
+    		System.out.println("to save");
     	}else
     	{
     		user.setUserid(Integer.parseInt(userid));
     		dao.updateUser(user);
+    		System.out.println("to update");
     	}
     	RequestDispatcher rd = req.getRequestDispatcher(LIST_USER);
     	req.setAttribute("users",dao.getAllUsers());
@@ -84,3 +86,4 @@ public class UserController extends HttpServlet {
     }
 
 }
+
